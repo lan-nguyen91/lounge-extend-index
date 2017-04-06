@@ -1,0 +1,77 @@
+env:
+    es6: true
+    node: true
+parserOptions:
+    ecma-version: 6
+    source-type: strict
+rules:
+    no-empty: 
+        - 2
+        - allowEmptyCatch: true
+    no-spaced-func: 0
+    array-bracket-spacing: 0
+    space-in-parens: 0
+    quote-props:
+        - 2
+        - as-needed
+    key-spacing: 0
+    space-unary-ops: 0
+    no-mixed-spaces-and-tabs: 2
+    no-trailing-spaces: 2
+    comma-spacing: 
+        - 2
+        - before: false
+          after: true
+    yoda: 
+        - 2
+        - never
+    no-with: 
+        - 2
+    brace-style: 
+        - 2
+        - 1tbs
+        - allowSingleLine: true
+    no-multiple-empty-lines: 0
+    no-multi-str: 2
+    one-var: 
+        - 2
+        - never
+    semi-spacing: 
+        - 2
+        - before: false
+          after: true
+    space-before-blocks: 
+        - 2
+        - always
+    space-before-function-paren:
+        - 2
+        - anonymous: always
+          named: always
+    wrap-iife: 2
+    comma-style: 
+        - 2
+        - last
+    space-infix-ops: 2
+    eol-last: 2
+    dot-notation: 2
+    curly: 
+        - 1
+        - multi-line
+    keyword-spacing: 
+        - 2
+    semi: 
+        - 2
+        - always
+    linebreak-style: 
+        - 2
+        - unix
+    quotes: 
+        - 2
+        - single
+        - allowTemplateLiterals: true
+          avoidEscape: true
+    indent: 
+        - 2
+        - 2
+        - SwitchCase: 1
+          ArrayExpression: first
