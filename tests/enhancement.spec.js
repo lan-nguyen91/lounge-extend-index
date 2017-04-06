@@ -35,9 +35,15 @@ describe('Enhanement Test', function () {
       }
     };
 
+    let couchbaseMockup = {
+      N1qlQuery : {
+        fromString : jasmine.createSpy('fromString').and.returnValue('test')
+      }
+    }
+
     it ('should contains defined function', (done) => {
 
-      let enhancement = this.module(lounge);
+      let enhancement = this.module(lounge, couchbaseMockup);
 
       expect(enhancement).toEqual(jasmine.objectContaining({
         find : jasmine.any(Function),
@@ -51,9 +57,8 @@ describe('Enhanement Test', function () {
     });
 
     it ('should throw an error of existed index', (done) => {
-      let N1qlQueryMock = N1qlQuery.fromString(`CREATE INDEX \`test\` ON \`test\`(test) USING GSI WITH {"defer_buid" : true};`)
-      this.module(lounge).N1qlCreate('test', 'test');
-      expect(lounge.bucket.query).toHaveBeenCalledWith(jasmine.any(Object), jasmine.any(Function));
+      this.module(lounge, couchbaseMockup).N1qlCreate('test', 'test');
+      expect(lounge.bucket.query).toHaveBeenCalledWith('test', jasmine.any(Function));
       done();
     });
 

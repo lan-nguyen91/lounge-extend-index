@@ -29,13 +29,17 @@ describe('Index Test', function () {
     let loungeMockup = jasmine.createSpy('lounge');
 
     loungeMockup = {
-      schema : Object
+      Schema : String
+    };
+
+    let couchbaseMockup = {
+      N1qlQuery : {}
     }
 
     it('should throw error if passing falsy schema', (done) => {
-      expect(() => this.module(null, loungeMockup)).toThrowError('This module only work with lounge schema');
+      expect(() => this.module('test', loungeMockup, couchbaseMockup)).toThrowError('This module only work with lounge schema');
       done();
-    }) 
+    });
 
   });
 
@@ -43,21 +47,25 @@ describe('Index Test', function () {
     let loungeMockup = jasmine.createSpy('lounge');
 
     loungeMockup = {
-      schema : Object,
+      Schema : Object,
       bucket : {
         query : jasmine.createSpy('query')
-      } 
-    }
+      }
+    };
 
     let schema = {
       static : jasmine.createSpy('static')
     };
 
+    let couchbaseMockup = {
+      N1qlQuery : {}
+    }
+
     it('should extend the schema with multiple functions', (done) => {
-      this.module(schema, loungeMockup)
+      this.module(schema, loungeMockup, couchbaseMockup);
       expect(schema).toEqual(jasmine.any(Object));
       done();
-    }) 
+    });
 
   });
 
