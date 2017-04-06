@@ -34,7 +34,7 @@ describe('Index Test', function () {
 
     let couchbaseMockup = {
       N1qlQuery : {}
-    }
+    };
 
     it('should throw error if passing falsy schema', (done) => {
       expect(() => this.module('test', loungeMockup, couchbaseMockup)).toThrowError('This module only work with lounge schema');
@@ -59,7 +59,7 @@ describe('Index Test', function () {
 
     let couchbaseMockup = {
       N1qlQuery : {}
-    }
+    };
 
     it('should extend the schema with multiple functions', (done) => {
       this.module(schema, loungeMockup, couchbaseMockup);

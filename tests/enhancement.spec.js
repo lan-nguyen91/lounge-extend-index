@@ -39,7 +39,7 @@ describe('Enhanement Test', function () {
       N1qlQuery : {
         fromString : jasmine.createSpy('fromString').and.returnValue('test')
       }
-    }
+    };
 
     it ('should contains defined function', (done) => {
 
