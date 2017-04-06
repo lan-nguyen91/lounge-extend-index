@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "gulp jasmine"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
@@ -27,5 +30,24 @@
   "bugs": {
     "url": "https://github.com/lan-nguyen91/lounge-extend-index/issues"
   },
-  "homepage": "https://github.com/lan-nguyen91/lounge-extend-index#readme"
+  "homepage": "https://github.com/lan-nguyen91/lounge-extend-index#readme",
+  "devDependencies": {
+    "co-mocha": "^1.2.0",
+    "eslint": "^3.13.1",
+    "git-guppy": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-debug": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-jsonlint": "^1.2.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-sequence": "^0.4.6",
+    "guppy-pre-commit": "^0.4.0",
+    "jasmine-console-reporter": "^1.2.7",
+    "mockery": "^2.0.0",
+    "rewire": "^2.5.2",
+    "supertest": "^3.0.0",
+    "yargs": "^5.0.0"
+  }
 }
