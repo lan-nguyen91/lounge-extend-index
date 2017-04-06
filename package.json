@@ -5,10 +5,8 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
-    "couchbase": "^2.3.2",
     "debug": "^2.6.3",
     "lodash": "^4.17.4",
-    "lounge": "^0.8.1",
     "lounge-extend-index" : "git+ssh://github.com/lan-nguyen91/lounge-extend-index.git"
   },
   "name": "lounge-extend-index",
