@@ -6,8 +6,7 @@
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
     "debug": "^2.6.3",
-    "lodash": "^4.17.4",
-    "lounge-extend-index": "git+ssh://github.com/lan-nguyen91/lounge-extend-index.git"
+    "lodash": "^4.17.4"
   },
   "name": "lounge-extend-index",
   "description": "Add functionality to base schema",
