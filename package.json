@@ -1,21 +1,18 @@
 {
   "scripts": {
-    "test": "gulp jasmine"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
     "debug": "^2.6.3",
     "lodash": "^4.17.4",
-    "lounge-extend-index" : "git+ssh://github.com/lan-nguyen91/lounge-extend-index.git"
+    "lounge-extend-index": "git+ssh://github.com/lan-nguyen91/lounge-extend-index.git"
   },
   "name": "lounge-extend-index",
   "description": "Add functionality to base schema",
   "version": "1.0.0",
-  "main" : "lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lan-nguyen91/lounge-extend-index.git"
@@ -31,6 +28,7 @@
   "homepage": "https://github.com/lan-nguyen91/lounge-extend-index#readme",
   "devDependencies": {
     "co-mocha": "^1.2.0",
+    "couchbase": "^2.3.2",
     "eslint": "^3.13.1",
     "git-guppy": "^2.1.0",
     "gulp": "^3.9.1",
@@ -43,6 +41,7 @@
     "gulp-sequence": "^0.4.6",
     "guppy-pre-commit": "^0.4.0",
     "jasmine-console-reporter": "^1.2.7",
+    "lounge": "^0.9.0",
     "mockery": "^2.0.0",
     "rewire": "^2.5.2",
     "supertest": "^3.0.0",
