@@ -28,7 +28,9 @@ co (function * () {
       updatedAt: Date
     }
   });
-  extendIndex(baseSchema, lounge, couchbase);
+  extendIndex(lounge, couchbase, {
+    customeQueryString : 'q'
+  });
 
   let schema = lounge.schema({
     client_id : String,
@@ -37,13 +39,18 @@ co (function * () {
     redirectURI : String
   });
 
-  schema.statics.N1qlCreate('testing', ['client_id']);
+  schema.N1qlCreate('testing', ['client_id']);
+  schema.N1qlCreate('ByClientAndSecret', ['client_id', 'client_secret']);
   let m = lounge.model('test', schema);
 
-  let result = yield m.find({
-    client_id : 'one',
-    client_secret : 'two'
-  });
+  let result = yield m.qByClientAndSecret('one', 'three');
+  /*
+   *let result = yield m.find({
+   *  client_id : 'one',
+   *  client_secret : 'three'
+   *});
+   */
+
   console.log(result);
 
 }).catch(function (e) {
