@@ -16,6 +16,10 @@ let baseSchema = lounge.schema({
 
 
 co (function * () {
+  lounge.connect({
+    connectionString : '127.0.0.1',
+    bucket : 'default'
+  });
   yield lounge.connect({
     connectionString : '127.0.0.1',
     bucket : 'default'
