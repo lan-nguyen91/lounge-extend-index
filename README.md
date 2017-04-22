@@ -115,6 +115,25 @@ dbConnection.then(function (bucket) {
 	});
 ```
 ---
+# Query with nested model
+- keyword load with desired nested model
+	- current functionality only support 1 level child model. 
+
+```
+	result = UserModel.find({
+		id : '12345'
+		email : 'john.doe@johndoe.com'
+	}, {
+			load : { grade :  true }
+		}
+	);
+
+	load : { // will load all child model
+		all : true 
+	}
+```
+---
+
 
 # Author
 
