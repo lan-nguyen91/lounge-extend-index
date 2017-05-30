@@ -1,4 +1,3 @@
-
 'use strict';
 
 const mockery = require('mockery');
@@ -15,11 +14,30 @@ describe('Enhanement Test', function () {
       warnOnUnregistered: false
     });
 
-    this.module = require('../lib/enhancement.js');
+    this.promiseMock = {
+      all        : jasmine.createSpy('all').and.returnValue(true),
+      promisifyAll : function (bucket) {
+        return {
+          queryAsync : jasmine.createSpy('queryAsync').and.returnValue(Promise.resolve('test')),
+          _name      : 'test'
+        };
+      }
+    };
+
+    this.queryBuilderMock = {
+      buildQuery : jasmine.createSpy('query-builder').and.returnValue('test')
+    };
+
+    mockery.registerMock('bluebird', this.promiseMock);
+    mockery.registerMock('./query_builder', this.queryBuilderMock);
+
+    this.module = require('../lib/enhancement');
+
   });
 
   afterEach(() => {
     mockery.disable();
+    mockery.deregisterMock('bluebird');
   });
 
   it('should have only 1 function', (done) => {
@@ -32,6 +50,16 @@ describe('Enhanement Test', function () {
       bucket : {
         query : jasmine.createSpy('bucket'),
         _name : 'test'
+      },
+      getModel : function (modelName) {
+        return function () {
+          return {
+            save : jasmine.createSpy('save').and.returnValue('test')
+          };
+        };
+      },
+      findById : function () {
+        return Promise.resolve('test');
       }
     };
 
@@ -53,12 +81,24 @@ describe('Enhanement Test', function () {
         create : jasmine.any(Function)
       }));
 
-      done();
-    });
+      let query = { test : 'test' };
+      let body  = { test : 'test' };
 
-    it ('should throw an error of existed index', (done) => {
-      this.module(lounge, couchbaseMockup).N1qlCreate('test', 'test');
-      expect(lounge.bucket.query).toHaveBeenCalledWith('test', jasmine.any(Function));
+      let doc;
+      doc = enhancement.findOneAndUpdate(query, body);
+      expect(doc).toEqual(jasmine.any(Object));
+
+      doc = enhancement.find(query, body);
+      expect(doc).toEqual(jasmine.any(Object));
+
+      doc = enhancement.create(body);
+      expect(doc).toEqual(jasmine.any(String));
+
+      doc = enhancement.findOne(query);
+      expect(doc).toEqual(jasmine.any(Object));
+
+      doc = enhancement.find(query);
+      expect(doc).toEqual(jasmine.any(Object));
       done();
     });
 
